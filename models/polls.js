@@ -1,10 +1,12 @@
 "use strict";
 var rethinkdb = require('rethinkdb');
-var db = require('./db');
+var dbclass = require('./db');
+var db = new dbclass();
 var async = require('async');
 
 class polls {
   addNewPolls(pollData,callback) {
+  	console.log(pollData);
     async.waterfall([
       function(callback) {
         db.connectToDb(function(err,connection) {
